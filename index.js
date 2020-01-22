@@ -42,8 +42,20 @@ Airplane.prototype.land = function () {
 function Person(name, age) {
   this.name = name;
   this.age = age;
-
+  this.stomach = [];
 }
+
+Person.prototype.eat = function() {
+  this.stomach = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+};
+
+Person.prototype.poop = function() {
+  this.stomach = [];
+};
+
+Person.prototype.toString = function() {
+  return `${this.name}, ${this.age}`;
+};
 
 /*
   TASK 2
@@ -59,8 +71,22 @@ function Person(name, age) {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+}
 
+Car.prototype.fill = function() {
+  this.tank++;
+}
+
+Car.prototype.drive = function() {
+  this.odometer++;
+  this.tank--;
+  this.milesPerGallon--;
+  return `I ran out of fuel at ${this.odometer} miles!  being ${this.odometer}`;
 }
 
 /*
